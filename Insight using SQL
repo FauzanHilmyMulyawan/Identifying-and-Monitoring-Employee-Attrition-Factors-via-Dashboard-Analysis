@@ -1,0 +1,13 @@
+SELECT Attrition, COUNT(*) AS Count
+FROM Attrition_table
+GROUP BY Attrition;
+
+SELECT BusinessTravel, COUNT(Attrition) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY BusinessTravel;
+
+SELECT Department,BusinessTravel, COUNT(Attrition) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY BusinessTravel,Department;
