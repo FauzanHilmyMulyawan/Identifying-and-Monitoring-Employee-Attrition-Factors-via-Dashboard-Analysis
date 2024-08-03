@@ -1,14 +1,176 @@
-#Attrition By Age
-SELECT Attrition, COUNT(*) AS Count
+SELECT 
+    YearsAtCompany,
+    COUNT(*) AS Count_Employees,
+    SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) AS Count_Attrition
+FROM Attrition_table
+GROUP BY YearsAtCompany
+ORDER BY YearsAtCompany;
+
+
+SELECT 
+    WorkLifeBalance,
+    OverTime,
+    JobSatisfaction,
+    COUNT(*) AS Count_Employees,
+    SUM(CASE WHEN Attrition = 1 THEN 1 ELSE 0 END) AS Count_Attrition
+FROM Attrition_table
+GROUP BY WorkLifeBalance, OverTime, JobSatisfaction
+ORDER BY WorkLifeBalance, OverTime, JobSatisfaction;
+
+
+SELECT 
+    EmployeeID,
+    PromotionStatus,
+    SalaryIncrease,
+    Attrition
+FROM (
+    SELECT 
+        EmployeeID,
+        CASE 
+            WHEN YearsSinceLastPromotion = 0 THEN 'Recently Promoted'
+            ELSE 'Not Recently Promoted'
+        END AS PromotionStatus,
+        CASE 
+            WHEN PercentSalaryHike >= 15 THEN 'High Increase'
+            WHEN PercentSalaryHike BETWEEN 10 AND 14 THEN 'Moderate Increase'
+            ELSE 'Low Increase'
+        END AS SalaryIncrease,
+        Attrition
+    FROM Attrition_table
+) AS Temp
+GROUP BY PromotionStatus, SalaryIncrease
+ORDER BY PromotionStatus, SalaryIncrease;
+
+
+SELECT 
+    Age, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Age
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    Department, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Department
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    JobRole, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY JobRole
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    WorkLifeBalance, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY WorkLifeBalance
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    DistanceFromHome, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY DistanceFromHome
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    YearsAtCompany, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY YearsAtCompany
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    Education, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Education
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    Gender, 
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Gender
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    Age,
+    AVG(JobSatisfaction) AS Avg_JobSatisfaction
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Age
+ORDER BY Age;
+
+
+SELECT 
+    OverTime,
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY OverTime
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    YearsSinceLastPromotion,
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY YearsSinceLastPromotion
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    PerformanceRating,
+    COUNT(*) AS Count_Attrition
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY PerformanceRating
+ORDER BY Count_Attrition DESC;
+
+
+SELECT 
+    Attrition,
+    AVG(YearsAtCompany) AS Avg_YearsAtCompany
 FROM Attrition_table
 GROUP BY Attrition;
 
-SELECT BusinessTravel, COUNT(Attrition) AS Count_Attrition
-FROM Attrition_table
-WHERE Attrition = 1
-GROUP BY BusinessTravel;
 
-SELECT Department,BusinessTravel, COUNT(Attrition) AS Count_Attrition
+SELECT 
+    Age, 
+    DistanceFromHome, 
+    JobRole, 
+    COUNT(*) AS Count_Attrition
 FROM Attrition_table
 WHERE Attrition = 1
-GROUP BY BusinessTravel,Department;
+GROUP BY Age, DistanceFromHome, JobRole
+ORDER BY Count_Attrition DESC;
+
+SELECT 
+    Department,
+    AVG(JobSatisfaction) AS Avg_JobSatisfaction
+FROM Attrition_table
+WHERE Attrition = 1
+GROUP BY Department
+ORDER BY Avg_JobSatisfaction DESC;
