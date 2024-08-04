@@ -6,7 +6,6 @@ FROM Attrition_table
 GROUP BY YearsAtCompany
 ORDER BY YearsAtCompany;
 
-
 SELECT 
     WorkLifeBalance,
     OverTime,
@@ -16,7 +15,6 @@ SELECT
 FROM Attrition_table
 GROUP BY WorkLifeBalance, OverTime, JobSatisfaction
 ORDER BY WorkLifeBalance, OverTime, JobSatisfaction;
-
 
 SELECT 
     EmployeeID,
@@ -41,7 +39,6 @@ FROM (
 GROUP BY PromotionStatus, SalaryIncrease
 ORDER BY PromotionStatus, SalaryIncrease;
 
-
 SELECT 
     Age, 
     COUNT(*) AS Count_Attrition
@@ -49,7 +46,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY Age
 ORDER BY Count_Attrition DESC;
-
 
 SELECT 
     Department, 
@@ -59,7 +55,6 @@ WHERE Attrition = 1
 GROUP BY Department
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     JobRole, 
     COUNT(*) AS Count_Attrition
@@ -67,7 +62,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY JobRole
 ORDER BY Count_Attrition DESC;
-
 
 SELECT 
     WorkLifeBalance, 
@@ -77,7 +71,6 @@ WHERE Attrition = 1
 GROUP BY WorkLifeBalance
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     DistanceFromHome, 
     COUNT(*) AS Count_Attrition
@@ -85,7 +78,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY DistanceFromHome
 ORDER BY Count_Attrition DESC;
-
 
 SELECT 
     YearsAtCompany, 
@@ -95,7 +87,6 @@ WHERE Attrition = 1
 GROUP BY YearsAtCompany
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     Education, 
     COUNT(*) AS Count_Attrition
@@ -103,7 +94,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY Education
 ORDER BY Count_Attrition DESC;
-
 
 SELECT 
     Gender, 
@@ -113,7 +103,6 @@ WHERE Attrition = 1
 GROUP BY Gender
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     Age,
     AVG(JobSatisfaction) AS Avg_JobSatisfaction
@@ -121,7 +110,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY Age
 ORDER BY Age;
-
 
 SELECT 
     OverTime,
@@ -131,7 +119,6 @@ WHERE Attrition = 1
 GROUP BY OverTime
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     YearsSinceLastPromotion,
     COUNT(*) AS Count_Attrition
@@ -139,7 +126,6 @@ FROM Attrition_table
 WHERE Attrition = 1
 GROUP BY YearsSinceLastPromotion
 ORDER BY Count_Attrition DESC;
-
 
 SELECT 
     PerformanceRating,
@@ -149,13 +135,11 @@ WHERE Attrition = 1
 GROUP BY PerformanceRating
 ORDER BY Count_Attrition DESC;
 
-
 SELECT 
     Attrition,
     AVG(YearsAtCompany) AS Avg_YearsAtCompany
 FROM Attrition_table
 GROUP BY Attrition;
-
 
 SELECT 
     Age, 
